@@ -1,15 +1,15 @@
+[Unit]
+Description=uWSGI service
+After=syslog.target
 
-[Unit] 
-Description=uWSGI service 
-After=syslog.target 
-
-[Service] 
+[Service]
 ExecStart=/home/ubuntu/.venv/bin/uwsgi -i /testDj/djTest/myWebSite/.config/uwsgi/myWebSite.ini 
-Restart=always 
-KillSignal=SIGQUIT 
-Type=notify 
-StandardError=syslog 
-NotifyAccess=all 
 
-[Install] 
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
 WantedBy=multi-user.target
