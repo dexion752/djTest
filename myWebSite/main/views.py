@@ -4,6 +4,9 @@ from django.shortcuts import render
 def index(request):
     return render(request, "main/index.html")
 
+def main_view(request):
+    return render(request, "main/main.html")
+
 from .models import Testdata
 
 #  def testdata_view(request):
