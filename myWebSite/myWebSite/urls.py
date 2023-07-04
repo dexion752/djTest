@@ -16,10 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from main import views as main_views
+from nkor import views as main_views
 
 urlpatterns = [
     path('', main_views.index, name="index"),
-    path('main/', include('main.urls')),
+    path('nkor/', include('nkor.urls')),
     path('admin/', admin.site.urls),
 ]

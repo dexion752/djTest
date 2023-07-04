@@ -2,10 +2,10 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return render(request, "main/index.html")
+    return render(request, "nkor/index.html")
 
-def main_view(request):
-    return render(request, "main/main.html")
+def nkor_view(request):
+    return render(request, "nkor/main.html")
 
 from .models import Testdata
 
@@ -17,4 +17,4 @@ from .models import Testdata
 def mirror_view(request):
     data = Testdata.objects.all()
     # print(data)
-    return render(request, 'main/mirror.html', {"data": data})
+    return render(request, 'nkor/mirror.html', {"data": data})
