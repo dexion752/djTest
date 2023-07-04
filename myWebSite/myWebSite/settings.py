@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--%8sr5j9=f-cyq2id(h0zmxt17mna8el_wuot@umg2d=7mzf1l'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#  DEBUG = True
+DEBUG = config('DEBUG', cast = bool)
 
 #  ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
@@ -79,27 +81,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'myWebSite.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-#  DATABASES = {
-#      'default': {
-#          'ENGINE': 'django.db.backends.sqlite3',
-#          'NAME': BASE_DIR / 'db.sqlite3',
-#      }
-#  }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mirror',
-        'USER': 'root',
-        'PASSWORD': 'Djqwkd76-',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': config('DATABASE_NAME'),
+        'USER': config('DATABASE_USERNAME'),
+        'PASSWORD': config('DATABASE_PASSWORD'),
+        'HOST': config('DATABASE_HOST'),
+        'PORT': config('DATABASE_PORT', cast = int),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
